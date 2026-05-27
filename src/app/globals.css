@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+table, th, td {
+  border: 1px solid white;
+}
+
+.scale{
+  transform: scaleX(1.2);
+  font-family: "Britanica";
 }
 
 @theme inline {
