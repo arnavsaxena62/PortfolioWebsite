@@ -38,38 +38,56 @@ const projects = [
 export default function Content() {
   return (
     <div className={`min-h-screen text-[#e7dcc3] text-5 ${serif.className}`}>
-      <main className="p-6">
+      <main className="p-3 sm:p-6">
         <div className="border border-[#8f7d55]/50 uppercase tracking-[0.18em]">
 
           {/* NAVBAR */}
-          <nav className="grid grid-cols-5">
+          <nav className="grid grid-cols-2 sm:grid-cols-5">
             <a
               href="#hero"
-              className={`${sans.className} tracking-normal border-r border-[#8f7d55]/50 p-3 text-5xl font-bold leading-none flex items-start no-underline text-[#e7dcc3]`}
+              className={`${sans.className} tracking-normal border-r border-[#8f7d55]/50 p-3 text-3xl sm:text-5xl font-bold leading-none flex items-start no-underline text-[#e7dcc3]`}
             >
               arnav <br /> saxena
             </a>
-            <a href="#hero" className="border-r border-[#8f7d55]/50 p-6 flex items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
+
+            {/* Desktop nav links — hidden on mobile */}
+            <a href="#hero" className="hidden sm:flex border-r border-[#8f7d55]/50 p-6 items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
               home
             </a>
-            <a href="#about" className="border-r border-[#8f7d55]/50 p-6 flex items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
+            <a href="#about" className="hidden sm:flex border-r border-[#8f7d55]/50 p-6 items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
               about
             </a>
-            <a href="#projects" className="border-r border-[#8f7d55]/50 p-6 flex items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
+            <a href="#projects" className="hidden sm:flex border-r border-[#8f7d55]/50 p-6 items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
               projects
             </a>
-            <a href="#contact" className="p-6 flex items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
+            <a href="#contact" className="hidden sm:flex p-6 items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
               contact
             </a>
+
+            {/* Mobile nav links — shown as a 2×2 grid in the right cell */}
+            <div className="grid grid-cols-2 sm:hidden">
+              <a href="#hero" className="border-l border-b border-[#8f7d55]/50 p-3 flex items-center no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 text-xs">
+                home
+              </a>
+              <a href="#about" className="border-l border-b border-[#8f7d55]/50 p-3 flex items-center no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 text-xs">
+                about
+              </a>
+              <a href="#projects" className="border-l border-[#8f7d55]/50 p-3 flex items-center no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 text-xs">
+                projects
+              </a>
+              <a href="#contact" className="border-l border-[#8f7d55]/50 p-3 flex items-center no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 text-xs">
+                contact
+              </a>
+            </div>
           </nav>
 
           {/* HERO */}
-          <section id="hero" className="border-t border-[#8f7d55]/50 p-25 flex items-center justify-center">
+          <section id="hero" className="border-t border-[#8f7d55]/50 px-6 py-16 sm:p-25 flex items-center justify-center">
             <div className="text-center space-y-5">
               <p className="text-sm tracking-[0.3em] text-[#c9b68b]/80">
                 SYSTEMS · LLMS · MACHINE LEARNING
               </p>
-              <h1 className={`${sans.className} font-bold text-5xl md:text-5xl leading-none`}>
+              <h1 className={`${sans.className} font-bold text-4xl sm:text-5xl leading-none`}>
                 BUILDING <br /> INTELLIGENT <br /> SYSTEMS
               </h1>
               <p className="max-w-2xl text-sm normal-case tracking-normal leading-relaxed text-[#c9b68b]/80">
@@ -90,8 +108,8 @@ export default function Content() {
           </section>
 
           {/* ABOUT */}
-          <section id="about" className="grid grid-cols-5 border-t border-[#8f7d55]/50">
-            <div className="col-span-3 min-h-[400px] p-10 space-y-8">
+          <section id="about" className="grid grid-cols-1 sm:grid-cols-5 border-t border-[#8f7d55]/50">
+            <div className="col-span-1 sm:col-span-3 p-6 sm:p-10 space-y-8">
               <h2 className={`${sans.className} text-4xl font-bold`}>about</h2>
               <p className="normal-case tracking-normal leading-loose text-[#c9b68b]/80 text-sm max-w-2xl">
                 I'm a first-year CS student at Jaypee Institute of Information Technology, specialising in AI/ML ,
@@ -114,7 +132,7 @@ export default function Content() {
               </div>
             </div>
 
-            <div className="col-span-2 border-l border-[#8f7d55]/50 p-10">
+            <div className="col-span-1 sm:col-span-2 border-t sm:border-t-0 sm:border-l border-[#8f7d55]/50 p-6 sm:p-10">
               <h2 className={`${sans.className} text-4xl font-bold mb-8`}>education</h2>
               <div className="space-y-6 text-[#c9b68b]/80">
                 <div>
@@ -155,22 +173,27 @@ export default function Content() {
           </div>
 
           {/* PROJECT GRID */}
-          <section className="grid grid-cols-3 border-t border-[#8f7d55]/50">
+          <section className="grid grid-cols-1 sm:grid-cols-3 border-t border-[#8f7d55]/50">
             {projects.map((p, i) => (
               <a
                 key={p.num}
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`h-[360px] p-8 hover:bg-white/5 transition duration-500 cursor-pointer no-underline text-[#e7dcc3] ${i < projects.length - 1 ? "border-r border-[#8f7d55]/50" : ""}`}
+                className={`
+                  p-6 sm:p-8 hover:bg-white/5 transition duration-500 cursor-pointer no-underline text-[#e7dcc3]
+                  ${i < projects.length - 1
+                    ? "border-b sm:border-b-0 sm:border-r border-[#8f7d55]/50"
+                    : ""}
+                `}
               >
-                <div className="flex flex-col justify-between h-full">
+                <div className="flex flex-col justify-between gap-6 sm:h-[360px]">
                   <div>
                     <p className="text-sm text-[#c9b68b]/60 mb-4">{p.num}</p>
                     <h3 className="text-3xl font-bold mb-6">{p.name}</h3>
                     <p className="normal-case tracking-normal text-sm text-[#c9b68b]/70">{p.desc}</p>
                   </div>
-                  <p className={`${serif.className} text-xs  text-[#c9b68b]/50`}>{p.stack}</p>
+                  <p className={`${serif.className} text-xs text-[#c9b68b]/50`}>{p.stack}</p>
                 </div>
               </a>
             ))}
@@ -178,8 +201,8 @@ export default function Content() {
 
           {/* CONTACT */}
           <section id="contact" className="border-t border-[#8f7d55]/50">
-            <div className="h-32 px-10 flex items-center">
-              <h2 className="text-5xl font-bold">contact</h2>
+            <div className="h-24 sm:h-32 px-6 sm:px-10 flex items-center">
+              <h2 className="text-4xl sm:text-5xl font-bold">contact</h2>
             </div>
 
             <a
@@ -188,9 +211,9 @@ export default function Content() {
               rel="noopener noreferrer"
               className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block"
             >
-              <div className="grid grid-cols-5 border-t border-[#8f7d55]/50">
-                <div className="col-span-3 p-3 border-r border-[#8f7d55]/50 px-10 flex items-center">github</div>
-                <div className="col-span-2 p-3 px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70">github.com/arnavsaxena62</div>
+              <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
+                <div className="col-span-1 sm:col-span-3 p-3 border-r border-[#8f7d55]/50 px-4 sm:px-10 flex items-center">github</div>
+                <div className="col-span-1 sm:col-span-2 p-3 px-4 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base">github.com/arnavsaxena62</div>
               </div>
             </a>
 
@@ -198,9 +221,9 @@ export default function Content() {
               href="mailto:arnavsaxena62@gmail.com"
               className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block"
             >
-              <div className="grid grid-cols-5 border-t border-[#8f7d55]/50">
-                <div className="col-span-3 p-3 border-r border-[#8f7d55]/50 px-10 flex items-center">email</div>
-                <div className="col-span-2 p-3 px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70">arnavsaxena62@gmail.com</div>
+              <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
+                <div className="col-span-1 sm:col-span-3 p-3 border-r border-[#8f7d55]/50 px-4 sm:px-10 flex items-center">email</div>
+                <div className="col-span-1 sm:col-span-2 p-3 px-4 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base truncate">arnavsaxena62@gmail.com</div>
               </div>
             </a>
 
@@ -210,9 +233,9 @@ export default function Content() {
               rel="noopener noreferrer"
               className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block"
             >
-              <div className="grid grid-cols-5 border-t border-[#8f7d55]/50">
-                <div className="col-span-3 p-3 border-r border-[#8f7d55]/50 px-10 flex items-center">linkedin</div>
-                <div className="col-span-2 p-3 px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70">linkedin.com/in/arnavsaxena</div>
+              <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
+                <div className="col-span-1 sm:col-span-3 p-3 border-r border-[#8f7d55]/50 px-4 sm:px-10 flex items-center">linkedin</div>
+                <div className="col-span-1 sm:col-span-2 p-3 px-4 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base">linkedin.com/in/arnavsaxena</div>
               </div>
             </a>
           </section>
