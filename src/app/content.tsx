@@ -1,4 +1,7 @@
 import { Space_Grotesk, Noto_Serif } from "next/font/google";
+import Link from "next/link";
+import { ProjectData } from "@/data/projects";
+import Navbar from "@/components/navbar";
 
 const serif = Noto_Serif({
   subsets: ["latin"],
@@ -11,29 +14,7 @@ const sans = Space_Grotesk({
   variable: "--font-sans",
 });
 
-const projects = [
-  {
-    num: "01",
-    name: "PROMPTOPS",
-    desc: "Full-stack prompt engineering workbench, run prompts across multiple LLMs in parallel, compare outputs side-by-side, and evaluate results with an AI-as-judge pipeline. Includes token tracking, cost estimation, and a versioning system for repeatable experiments.",
-    stack: "REACT • TYPESCRIPT • FASTAPI • OPENROUTER API",
-    href: "https://github.com/arnavsaxena62/PromptOps",
-  },
-  {
-    num: "02",
-    name: "POLLUTION TRACKER",
-    desc: "Simulates pollutant dispersion using real wind-field data and bilinear interpolation on lat-lon grids. Optimized particle tracking for high-frequency real-time updates, with visualizations of spread patterns and regional directional flow.",
-    stack: "PYTHON • NUMPY • GEOSPATIAL DATA",
-    href: "https://github.com/arnavsaxena62/pollution-tracker",
-  },
-  {
-    num: "03",
-    name: "STAR MAP",
-    desc: "GPU-accelerated 3D star field renderer with smooth pan, zoom, and rotation. Handles large point-cloud datasets at stable real-time framerates using camera transforms and depth-based scaling for intuitive spatial navigation.",
-    stack: "PYTHON • VISPY • OPENGL",
-    href: "https://github.com/arnavsaxena62/star-map",
-  },
-];
+
 
 export default function Content() {
   return (
@@ -41,45 +22,7 @@ export default function Content() {
       <main className="p-3 sm:p-6">
         <div className="border border-[#8f7d55]/50 uppercase tracking-[0.18em]">
 
-          {/* NAVBAR */}
-          <nav className="grid grid-cols-2 sm:grid-cols-5">
-            <a
-              href="#hero"
-              className={`${sans.className} tracking-normal border-r border-[#8f7d55]/50 p-3 text-3xl sm:text-5xl font-bold leading-none flex items-start no-underline text-[#e7dcc3]`}
-            >
-              arnav <br /> saxena
-            </a>
-
-            {/* Desktop nav links — hidden on mobile */}
-            <a href="#hero" className="hidden sm:flex border-r border-[#8f7d55]/50 p-6 items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
-              home
-            </a>
-            <a href="#about" className="hidden sm:flex border-r border-[#8f7d55]/50 p-6 items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
-              about
-            </a>
-            <a href="#projects" className="hidden sm:flex border-r border-[#8f7d55]/50 p-6 items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
-              projects
-            </a>
-            <a href="#contact" className="hidden sm:flex p-6 items-start no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300">
-              contact
-            </a>
-
-            {/* Mobile nav links — shown as a 2×2 grid in the right cell */}
-            <div className="grid grid-cols-2 sm:hidden">
-              <a href="#hero" className="border-l border-b border-[#8f7d55]/50 p-3 flex items-center no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 text-xs">
-                home
-              </a>
-              <a href="#about" className="border-l border-b border-[#8f7d55]/50 p-3 flex items-center no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 text-xs">
-                about
-              </a>
-              <a href="#projects" className="border-l border-[#8f7d55]/50 p-3 flex items-center no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 text-xs">
-                projects
-              </a>
-              <a href="#contact" className="border-l border-[#8f7d55]/50 p-3 flex items-center no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 text-xs">
-                contact
-              </a>
-            </div>
-          </nav>
+          <Navbar />    
 
           {/* HERO */}
           <section id="hero" className="border-t border-[#8f7d55]/50 px-6 py-16 sm:p-25 flex items-center justify-center">
@@ -174,36 +117,62 @@ export default function Content() {
 
           {/* PROJECT GRID */}
           <section className="grid grid-cols-1 sm:grid-cols-3 border-t border-[#8f7d55]/50">
-            {projects.map((p, i) => (
-              <a
-                key={p.num}
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`
-                  p-6 sm:p-8 hover:bg-white/5 transition duration-500 cursor-pointer no-underline text-[#e7dcc3]
-                  ${i < projects.length - 1
-                    ? "border-b sm:border-b-0 sm:border-r border-[#8f7d55]/50"
-                    : ""}
-                `}
-              >
-                <div className="flex flex-col justify-between gap-6 sm:h-[360px]">
-                  <div>
-                    <p className="text-sm text-[#c9b68b]/60 mb-4">{p.num}</p>
-                    <h3 className="text-3xl font-bold mb-6">{p.name}</h3>
-                    <p className="normal-case tracking-normal text-sm text-[#c9b68b]/70">{p.desc}</p>
-                  </div>
-                  <p className={`${serif.className} text-xs text-[#c9b68b]/50`}>{p.stack}</p>
-                </div>
-              </a>
-            ))}
-          </section>
+            {ProjectData.slice(0, 3).map((p, i) => (
+                <a
+                    key={p.slug}
+                    href={`/projects/${p.slug}`}
+                    rel="noopener noreferrer"
+                    className={`
+                    p-6 sm:p-8 hover:bg-white/5 transition duration-500 cursor-pointer no-underline text-[#e7dcc3]
+                    ${i < ProjectData.length - 1
+                        ? "border-b sm:border-b-0 sm:border-r border-[#8f7d55]/50"
+                        : ""}
+                    `}
+                >
+                    <div className="flex flex-col justify-between gap-6 sm:h-[360px]">
+                    <div>
+                        <p className="text-sm text-[#c9b68b]/60 mb-4">
+                        {p.num}
+                        </p>
+
+                        <h3 className="text-3xl font-bold mb-6">
+                        {p.name}
+                        </h3>
+
+                        <p className="normal-case tracking-normal text-sm text-[#c9b68b]/70">
+                        {p.tagline}
+                        </p>
+                    </div>
+
+                    <p className={`${serif.className} text-xs text-[#c9b68b]/50`}>
+                        {p.stack.join(" • ")}
+                    </p>
+                    </div>
+                </a>
+                ))}
+            
+            
+            
+            </section>
+            <div id="projects" className="border-t border-[#8f7d55]/50">
+  <Link
+    href="/projects"
+    className="no-underline p-3 flex items-center justify-between hover:bg-white/5 transition duration-500 group"
+  >
+    <p className={` text-xs text-[#e7dcc3]/50 px-5`}>
+      more projects
+    </p>
+    <span className="text-[#c9b68b]/40 group-hover:text-[#e7dcc3] px-5 transition duration-500 text-xl">
+      ↗
+    </span>
+  </Link>
+</div>
 
           {/* CONTACT */}
           <section id="contact" className="border-t border-[#8f7d55]/50">
-            <div className="h-24 sm:h-32 px-6 sm:px-10 flex items-center">
-              <h2 className="text-4xl sm:text-5xl font-bold">contact</h2>
-            </div>
+            <div id="projects" className="border-t border-[#8f7d55]/50 p-5 flex items-center">
+            <h2 className={`${sans.className} text-4xl font-bold`}>contact</h2>
+          </div>
 
             <a
               href="https://github.com/arnavsaxena62"
