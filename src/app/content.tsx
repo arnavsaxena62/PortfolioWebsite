@@ -159,7 +159,7 @@ export default function Content() {
     href="/projects"
     className="no-underline p-3 flex items-center justify-between hover:bg-white/5 transition duration-500 group"
   >
-    <p className={` text-xs text-[#e7dcc3]/50 px-5`}>
+    <p className={` text-xs text-[#c9b68b]/70 px-5`}>
       more projects
     </p>
     <span className="text-[#c9b68b]/40 group-hover:text-[#e7dcc3] px-5 transition duration-500 text-xl">
@@ -171,43 +171,30 @@ export default function Content() {
           {/* CONTACT */}
           <section id="contact" className="border-t border-[#8f7d55]/50">
             <div id="projects" className="border-t border-[#8f7d55]/50 p-5 flex items-center">
-            <h2 className={`${sans.className} text-4xl font-bold`}>contact</h2>
-          </div>
+                <h2 className={`${sans.className} text-4xl font-bold`}>contact</h2>
+            </div>
 
-            <a
-              href="https://github.com/arnavsaxena62"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block"
-            >
-              <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
+            <a href="https://github.com/arnavsaxena62" target="_blank" rel="noopener noreferrer" className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block">
+                <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
                 <div className="col-span-1 sm:col-span-3 p-3 border-r border-[#8f7d55]/50 px-4 sm:px-10 flex items-center">github</div>
-                <div className="col-span-1 sm:col-span-2 p-3 px-4 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base">github.com/arnavsaxena62</div>
-              </div>
+                <div className="col-span-1 sm:col-span-2 p-3 pl-4 pr-6 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base truncate min-w-0">github.com/arnavsaxena62</div>
+                </div>
             </a>
 
-            <a
-              href="mailto:arnavsaxena62@gmail.com"
-              className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block"
-            >
-              <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
+            <a href="mailto:arnavsaxena62@gmail.com" className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block">
+                <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
                 <div className="col-span-1 sm:col-span-3 p-3 border-r border-[#8f7d55]/50 px-4 sm:px-10 flex items-center">email</div>
-                <div className="col-span-1 sm:col-span-2 p-3 px-4 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base truncate">arnavsaxena62@gmail.com</div>
-              </div>
+                <div className="col-span-1 sm:col-span-2 p-3 pl-4 pr-6 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base truncate min-w-0">arnavsaxena62@gmail.com</div>
+                </div>
             </a>
 
-            <a
-              href="https://linkedin.com/in/arnavsaxena"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block"
-            >
-              <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
+            <a href="https://linkedin.com/in/arnavsaxena" target="_blank" rel="noopener noreferrer" className="no-underline text-[#e7dcc3] hover:bg-white/5 transition duration-300 block">
+                <div className="grid grid-cols-2 sm:grid-cols-5 border-t border-[#8f7d55]/50">
                 <div className="col-span-1 sm:col-span-3 p-3 border-r border-[#8f7d55]/50 px-4 sm:px-10 flex items-center">linkedin</div>
-                <div className="col-span-1 sm:col-span-2 p-3 px-4 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base">linkedin.com/in/arnavsaxena</div>
-              </div>
+                <div className="col-span-1 sm:col-span-2 p-3 pl-4 pr-6 sm:px-10 flex items-center normal-case tracking-normal text-[#c9b68b]/70 text-xs sm:text-base truncate min-w-0">linkedin.com/in/arnavsaxena</div>
+                </div>
             </a>
-          </section>
+            </section>
 
         </div>
       </main>

@@ -180,6 +180,7 @@ export default function ProjectPage({
 
                     ${i < 2 ? "border-b border-[#8f7d55]/50" : ""}
                     border-b
+                    border-t
                   `}
                 >
                   <p className="text-[10px] tracking-[0.2em] text-[#c9b68b]/50">
@@ -189,10 +190,12 @@ export default function ProjectPage({
                   <p
                     className={`
                       ${sans.className}
-                      text-2xl
+                      xl:text-2xl
                       font-bold
                       normal-case
                       tracking-normal
+                      truncate
+                      md:text-lg
                     `}
                   >
                     {h.value}
@@ -201,21 +204,13 @@ export default function ProjectPage({
               ))}
 
             </div>
-
               <div className="p-6 sm:p-10 pb-4">
-
-                
-
                 <h2 className={`${sans.className} text-3xl font-bold`}>
                   links
                 </h2>
 
               </div>
-              
-              
-
-
-              {project.links.map((link) => (
+              {/* {project.links.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
@@ -237,18 +232,30 @@ export default function ProjectPage({
                   <div className="p-4 px-6 normal-case tracking-normal text-[#c9b68b]/50 text-xs">
                     {link.href.replace(/^https?:\/\//, "")} ↗
                   </div>
-
                 </a>
-              ))}
-                
+              ))} */}
+
+              {project.links.map((link) => (
+                    <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="grid grid-cols-2 border-t border-[#8f7d55]/50 no-underline text-[#e7dcc3] hover:bg-white/5 transition border-b"
+                    >
+                        <div className="p-4 px-6 sm:px-10 border-r border-[#8f7d55]/50 text-sm">
+                        {link.label.toUpperCase()}
+                        </div>
+                        <div className="p-4 px-6 normal-case tracking-normal text-[#c9b68b]/50 text-xs truncate min-w-0">
+                        {link.href.replace(/^https?:\/\//, "")} ↗
+                        </div>
+                    </a>
+                    ))}
+
             </div>
-
           </section>
-
         </div>
-
       </main>
-
     </div>
   );
 }
