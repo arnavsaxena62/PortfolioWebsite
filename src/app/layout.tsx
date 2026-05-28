@@ -63,8 +63,8 @@ export default function RootLayout({
               sepia(100%)
               hue-rotate(65deg)
               saturate(300%)
-              brightness(0.6)
-              contrast(1.5)
+              brightness(0.7)
+              contrast(1.7)
             `,
           }}
         />
