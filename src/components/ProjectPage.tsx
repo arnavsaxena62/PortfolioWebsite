@@ -137,7 +137,9 @@ export default function ProjectPage({
           </div>
 
           {/* CAROUSEL */}
-          <Carousel images={project.images} />
+          {project.images && project.images.length > 0 && (
+              <Carousel images={project.images} />
+          )}
 
           {/* CONTENT */}
           <section className="grid grid-cols-1 sm:grid-cols-5 border-t border-[#8f7d55]/50">
