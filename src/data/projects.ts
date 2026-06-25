@@ -114,4 +114,97 @@ export const ProjectData: ProjectData[] = [
             { src: "/projects/starmap.png", caption: "BSC5 star field render" },
         ],
     },
+
+    {
+        slug: "compressor",
+        num: "04",
+        name: "COMPRESSOR",
+        tagline:
+            "Lossless data compressor built in C implementing a full BWT + MTF + Huffman pipeline — the same algorithm family used by bzip2. Compresses a 2000KB text file down to 30KB with no external libraries.",
+        fastline: "bzip2-style compressor in C",
+        stack: ["C"],
+        about: [
+            "Implements the Burrows-Wheeler Transform as the first stage, which rearranges the input into a form that clusters repeated characters together without losing any information — making the data significantly more compressible by subsequent stages.",
+            "Move-to-Front encoding follows the BWT stage, exploiting the locality of reference introduced by the transform: recently seen symbols are assigned small integer codes, so the output skews heavily toward low values which Huffman coding can then encode very efficiently.",
+            "Huffman coding forms the final compression stage, building an optimal prefix-free code tree from symbol frequencies in the MTF output and encoding each symbol with a variable-length bitstring — common symbols get short codes, rare ones get long ones.",
+            "The three-stage pipeline mirrors the core algorithm family behind bzip2, one of the most widely used lossless compression formats, implemented here from scratch in C with no external libraries or compression primitives.",
+            "Achieved 98.5% compression on a 2000KB plain text file, reducing it to 30KB — demonstrating that the pipeline is correctly exploiting the statistical structure of natural language text across all three stages.",
+            "Built as a CLI tool that takes an input file and writes the compressed output, with a corresponding decompression path that reverses the Huffman, MTF, and BWT stages in sequence to recover the original file exactly.",
+        ],
+        links: [
+            {
+                label: "GitHub",
+                href: "https://github.com/arnavsaxena62/Compressor",
+            },
+        ],
+        highlights: [
+            { label: "Algorithm", value: "BWT + MTF + Huffman" },
+            { label: "Language", value: "C" },
+            { label: "Compression", value: "2000KB → 30KB" },
+            { label: "Status", value: "Complete" },
+        ],
+        images: [],
+    },
+
+    {
+        slug: "commitcast",
+        num: "05",
+        name: "COMMITCAST",
+        tagline:
+            "Automated pipeline that fetches your GitHub commit activity each morning, summarizes raw diffs using a two-stage LLM pipeline, and delivers ready-to-post tweet drafts to Telegram — building in public without the overhead.",
+        fastline: "github activity to tweets via LLM",
+        stack: ["Python", "OpenRouter API", "GitHub API", "Telegram Bot API"],
+        about: [
+            "Fetches PushEvents from the GitHub API going back up to three days, pulling the raw diffs for each commit rather than just the commit messages — which are often too terse or developer-shorthand to be useful as public communication.",
+            "First LLM stage summarizes each individual commit diff into a plain-English sentence describing what actually changed, stripping away the noise of line-level diffs and translating implementation details into something a technical audience can understand at a glance.",
+            "Second LLM stage groups the per-commit summaries by repository and date, then generates one to three tweet draft options per group using a persona prompt tuned for dry wit and technical specificity — explicitly avoiding hustle-culture phrasing.",
+            "Runs on a daily cron job on a home Linux server, firing each morning and delivering that day's drafts to a Telegram channel via the Bot API, so the entire build-in-public workflow requires zero manual effort beyond choosing which draft to post.",
+            "Two-stage architecture means the tweet generation stage receives clean semantic summaries rather than raw diffs, producing significantly better output than a single-stage approach that tries to go from code to tweet in one step.",
+            "Uses OpenRouter for model access with a free-tier fallback, keeping operating costs near zero while retaining the ability to swap in stronger models for either stage without changing the pipeline logic.",
+        ],
+        links: [
+            {
+                label: "GitHub",
+                href: "https://github.com/arnavsaxena62/commitcast",
+            },
+        ],
+        highlights: [
+            { label: "Pipeline", value: "2-stage LLM" },
+            { label: "Delivery", value: "Telegram" },
+            { label: "Schedule", value: "Daily cron" },
+            { label: "Status", value: "Active" },
+        ],
+        images: [],
+    },
+
+    {
+        slug: "langanalyzer",
+        num: "06",
+        name: "LANGANALYZER",
+        tagline:
+            "Python library that recursively scans a codebase and returns a language breakdown by file size — the same stat GitHub shows on every repository, available locally for any directory.",
+        fastline: "github language stats for local directories",
+        stack: ["Python"],
+        about: [
+            "Recursively walks a directory tree and groups every file by extension, accumulating total byte size per language — mirroring exactly the calculation GitHub performs on repository contents to generate its language percentage bar.",
+            "Returns a structured dictionary with raw sizes and percentage breakdowns per extension, making it trivial to integrate into other tools, scripts, or reporting pipelines that need to understand the composition of a codebase.",
+            "Supports a configurable ignore list that defaults to skipping .git and __pycache__ directories, with the option to extend it to node_modules, build artifacts, or any other directories that would skew the language stats.",
+            "Dependency-free by design — the entire library uses only the Python standard library, so it installs without pulling in any transitive dependencies and works in any Python environment without compatibility concerns.",
+            "Built as a reusable library rather than a one-off script, with a clean public API that takes a path and optional ignore list and returns a predictable data structure — designed to be imported and used programmatically rather than just run from the command line.",
+            "Installable directly from source via pip, making it straightforward to add to any project or virtual environment without needing a PyPI account or package registry setup.",
+        ],
+        links: [
+            {
+                label: "GitHub",
+                href: "https://github.com/arnavsaxena62/langanalyzer",
+            },
+        ],
+        highlights: [
+            { label: "Type", value: "Python Library" },
+            { label: "Dependencies", value: "Zero" },
+            { label: "Install", value: "pip + source" },
+            { label: "Status", value: "Stable" },
+        ],
+        images: [],
+    },
 ];
